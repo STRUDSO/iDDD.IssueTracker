@@ -2,11 +2,15 @@
 
 namespace SaasOvation.IssueTrack.Domain.Model.Products
 {
-    public class ProductId
+    public class ProductId : IAmId
     {
-        public ProductId()
+        private ProductId(string id)
         {
-            Id = Guid.NewGuid().ToString();
+            Id = id;
+        }
+
+        public ProductId() : this(Guid.NewGuid().ToString())
+        {
         }
 
         public string Id { get; private set; }
