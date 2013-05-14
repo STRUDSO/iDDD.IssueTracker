@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using SaasOvation.IssueTrack.Domain.Model.Tenants;
+using System.Linq;
 
 namespace SaasOvation.IssueTrack.Domain.Model.Products
 {
     public class Product
     {
-        private readonly IList<Issue> _issues = new List<Issue>();
+        private readonly IList<Issue> _issues;
 
         public Product(ProductId id, TenantId tenantId, string name, string description,
-                       ProductManager productManager, IssueAssigner assigner)
+                       ProductManager productManager, IssueAssigner assigner, IEnumerable<Issue> issues = null)
         {
             Id = id;
             TenantId = tenantId;
@@ -16,6 +17,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
             Description = description;
             ProductManager = productManager;
             IssueAssigner = assigner;
+            _issues = (issues ?? Enumerable.Empty<Issue>()).ToList();
         }
 
         public ProductId Id { get; private set; }
@@ -40,6 +42,11 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
         public void ReportFeature(string summary, string description)
         {
             _issues.Add(new Issue(new IssueId(), summary, description, IssueType.Feature));
+        }
+
+        public double WeightedTotal(SeverityWeights severityWeights)
+        {
+            return new SeverityTotals(_issues.Count(x => x.Type == IssueType.Defect)).Weighted(severityWeights);
         }
     }
 }

@@ -65,10 +65,12 @@
     <Compile Include="Domain\Model\IdsTest.cs" />
     <Compile Include="Domain\Model\Products\IssueIdTests.cs" />
     <Compile Include="Domain\Model\Products\IssueTests.cs" />
+    <Compile Include="Domain\Model\Products\ProductDefectRankingServiceTests.cs" />
     <Compile Include="Domain\Model\Products\ProductManagerIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductManagerTests.cs" />
     <Compile Include="Domain\Model\Products\ProductTest.cs" />
+    <Compile Include="Domain\Model\Products\ReleaseTests.cs" />
     <Compile Include="Domain\Model\Tenants\TenantIdTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

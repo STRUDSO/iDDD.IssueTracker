@@ -14,8 +14,8 @@ namespace iDDD.IssueTracker.Test
     {
         public AutoMoqDataAttribute()
             : base(new Fixture()
-            .Customize(new Bla())
                        .Customize(new AutoMoqCustomization())
+            .Customize(new Bla())
             )
         {
         }

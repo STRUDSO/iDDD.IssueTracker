@@ -36,6 +36,5 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
         {
             Assert.Equal(IssueStatus.Open, issue.Status);
         }
-
     }
 }
