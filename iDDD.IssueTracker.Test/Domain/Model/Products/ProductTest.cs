@@ -26,7 +26,8 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
         }
 
         [Theory, AutoMoqData]
-        public void Create_Product_WillSetProductManagerIdIdentity([Frozen] ProductManager productManager, Product product)
+        public void Create_Product_WillSetProductManagerIdIdentity([Frozen] ProductManager productManager,
+                                                                   Product product)
         {
             Assert.Equal(productManager, product.ProductManager);
         }
