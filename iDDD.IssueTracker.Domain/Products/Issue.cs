@@ -20,7 +20,13 @@
         public IssueType Type { get; private set; }
         public IssueStatus Status { get; private set; }
         public IssuePriority Priority { get; private set; }
+
+        public void ChangeSeverity()
+        {
+            DomainEventPublisher.Publish(new DefectSeverityChanged(Id));
+        }
     }
+
     public enum IssuePriority
     {
         Low,
