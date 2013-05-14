@@ -24,5 +24,18 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
         {
             Assert.Equal(description, issue.Description);
         }
+
+        [Theory, AutoMoqData]
+        public void Ctor_IssueType_IsSet([Frozen]IssueType type, Issue issue)
+        {
+            Assert.Equal(type, issue.Type);
+        }
+
+        [Theory, AutoMoqData]
+        public void Ctor_InitialStatus_Open(Issue issue)
+        {
+            Assert.Equal(IssueStatus.Open, issue.Status);
+        }
+
     }
 }
