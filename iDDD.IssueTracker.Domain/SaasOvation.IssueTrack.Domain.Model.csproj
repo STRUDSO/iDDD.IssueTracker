@@ -60,6 +60,7 @@
     <Compile Include="Products\Release.cs" />
     <Compile Include="Products\SeverityTotals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaasOvationIssueTrackDomain.cs" />
     <Compile Include="Tenants\TenantId.cs" />
   </ItemGroup>
   <ItemGroup>

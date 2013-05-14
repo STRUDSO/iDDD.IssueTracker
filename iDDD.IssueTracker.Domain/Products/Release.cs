@@ -1,4 +1,6 @@
-﻿namespace SaasOvation.IssueTrack.Domain.Model.Products
+﻿using System;
+
+namespace SaasOvation.IssueTrack.Domain.Model.Products
 {
     public class Release
     {
@@ -6,6 +8,7 @@
 
         public Release(SeverityTotals severityTotals)
         {
+            if (severityTotals == null) throw new ArgumentNullException("severityTotals");
             _severityTotals = severityTotals;
         }
 
@@ -19,6 +22,7 @@
     {
         public DefectStatisticsCalculator(SeverityTotals severityTotals)
         {
+            if (severityTotals == null) throw new ArgumentNullException("severityTotals");
             SeverityTotals = severityTotals;
         }
 
@@ -26,6 +30,8 @@
 
         public DefectDensity DefectDensity(Metric metric, SeverityWeights severityWeights)
         {
+            if (metric == null) throw new ArgumentNullException("metric");
+            if (severityWeights == null) throw new ArgumentNullException("severityWeights");
             double weightedOutstandingDefects = SeverityTotals.Weighted(severityWeights);
             double index = metric.Value/weightedOutstandingDefects;
             return new DefectDensity(index);

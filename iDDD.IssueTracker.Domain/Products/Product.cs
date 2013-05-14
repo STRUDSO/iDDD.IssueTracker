@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SaasOvation.IssueTrack.Domain.Model.Tenants;
 using System.Linq;
 
@@ -11,6 +12,13 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
         public Product(ProductId id, TenantId tenantId, string name, string description,
                        ProductManager productManager, IssueAssigner assigner, IEnumerable<Issue> issues = null)
         {
+            if (id == null) throw new ArgumentNullException("id");
+            if (tenantId == null) throw new ArgumentNullException("tenantId");
+            if (name == null) throw new ArgumentNullException("name");
+            if (description == null) throw new ArgumentNullException("description");
+            if (productManager == null) throw new ArgumentNullException("productManager");
+            if (assigner == null) throw new ArgumentNullException("assigner");
+            if (issues == null) throw new ArgumentNullException("issues");
             Id = id;
             TenantId = tenantId;
             Name = name;
@@ -46,6 +54,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
 
         public double WeightedTotal(SeverityWeights severityWeights)
         {
+            if (severityWeights == null) throw new ArgumentNullException("severityWeights");
             return SeverityTotals().Weighted(severityWeights);
         }
 

@@ -10,6 +10,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
 
         public IssueId(string id)
         {
+            if (id == null) throw new ArgumentNullException("id");
             Id = id;
         }
 

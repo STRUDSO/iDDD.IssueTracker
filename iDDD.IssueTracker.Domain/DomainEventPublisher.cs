@@ -8,6 +8,7 @@ namespace SaasOvation.IssueTrack.Domain.Model
 
         public static void Publish(object message)
         {
+            if (message == null) throw new ArgumentNullException("message");
             Thunk(message);
         }
     }

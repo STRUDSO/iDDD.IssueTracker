@@ -1,9 +1,15 @@
-﻿namespace SaasOvation.IssueTrack.Domain.Model.Products
+﻿using System;
+
+namespace SaasOvation.IssueTrack.Domain.Model.Products
 {
     public class Issue
     {
         public Issue(IssueId id, string summary, string description, IssueType type)
         {
+            if (id == null) throw new ArgumentNullException("id");
+            if (summary == null) throw new ArgumentNullException("summary");
+            if (description == null) throw new ArgumentNullException("description");
+            if (type == null) throw new ArgumentNullException("type");
             Id = id;
             Summary = summary;
             Description = description;
@@ -21,9 +27,10 @@
         public IssueStatus Status { get; private set; }
         public IssuePriority Priority { get; private set; }
 
-        public void ChangeSeverity()
+        public void ChangeSeverity(IssueStatus newStatus)
         {
-            DomainEventPublisher.Publish(new DefectSeverityChanged(Id));
+            DomainEventPublisher.Publish(new DefectSeverityChanged(Id, Status, newStatus));
+            Status = newStatus;
         }
     }
 

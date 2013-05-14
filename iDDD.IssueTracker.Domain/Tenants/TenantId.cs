@@ -1,5 +1,4 @@
 ﻿using System;
-using SaasOvation.IssueTrack.Domain.Model.Products;
 
 namespace SaasOvation.IssueTrack.Domain.Model.Tenants
 {
@@ -7,6 +6,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Tenants
     {
         public TenantId(string id)
         {
+            if (id == null) throw new ArgumentNullException("id");
             Id = id;
         }
 

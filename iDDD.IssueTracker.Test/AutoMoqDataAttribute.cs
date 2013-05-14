@@ -7,17 +7,27 @@ using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
 using Ploeh.AutoFixture.Kernel;
 using Ploeh.AutoFixture.Xunit;
+using SaasOvation.IssueTrack.Domain.Model;
 
 namespace iDDD.IssueTracker.Test
 {
     public class AutoMoqDataAttribute : AutoDataAttribute
     {
         public AutoMoqDataAttribute()
-            : base(new Fixture()
-                       .Customize(new AutoMoqCustomization())
-            .Customize(new Bla())
+            : base(Fixture
             )
         {
+            DomainEventPublisher.Thunk = o => { };
+        }
+
+        public static IFixture Fixture
+        {
+            get
+            {
+                return new Fixture()
+                    .Customize(new AutoMoqCustomization())
+                    .Customize(new Bla());
+            }
         }
     }
 
@@ -33,13 +43,21 @@ namespace iDDD.IssueTracker.Test
     {
         public object Create(object request, ISpecimenContext context)
         {
-            var type = request as Type;
-            if (type != null && typeof (Enumeration<>).MakeGenericType(type).IsAssignableFrom(type))
+            try
             {
-                var random = context.CreateAnonymous<int>();
-                var fieldOperators = EnumerationUtility.GetEnumerations(type).ToArray();
-                return fieldOperators.ElementAt(random%fieldOperators.Length);
+                var type = request as Type;
+                if (type != null && typeof (Enumeration<>).MakeGenericType(type).IsAssignableFrom(type))
+                {
+                    var random = context.CreateAnonymous<int>();
+                    var fieldOperators = EnumerationUtility.GetEnumerations(type).ToArray();
+                    return fieldOperators.ElementAt(random%fieldOperators.Length);
+                }
             }
+            catch (ArgumentException)
+            {
+
+            }
+
             return new NoSpecimen(request);
         }
     }
