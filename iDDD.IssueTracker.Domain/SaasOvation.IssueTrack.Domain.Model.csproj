@@ -40,8 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAmId.cs" />
+    <Compile Include="Products\IssueAssigner.cs" />
+    <Compile Include="Products\ProductManagerId.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Products\ProductId.cs" />
+    <Compile Include="Products\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tenants\TenantId.cs" />
   </ItemGroup>

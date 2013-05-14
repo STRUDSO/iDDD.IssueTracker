@@ -24,5 +24,29 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
         {
             Assert.Equal(id, product.TenantId);
         }
+
+        [Theory, AutoMoqData]
+        public void Create_Product_WillSetProductManagerIdIdentity([Frozen] ProductManager productManager, Product product)
+        {
+            Assert.Equal(productManager, product.ProductManager);
+        }
+
+        [Theory, AutoMoqData]
+        public void Create_Name_IsSet([Frozen] string name, Product product)
+        {
+            Assert.Equal(name, product.Name);
+        }
+
+        [Theory, AutoMoqData]
+        public void Create_Description_IsSet([Frozen] string description, Product product)
+        {
+            Assert.Equal(description, product.Description);
+        }
+
+        [Theory, AutoMoqData]
+        public void Create_IssueAssigner_IsSet([Frozen] IssueAssigner assigner, Product product)
+        {
+            Assert.Equal(assigner, product.IssueAssigner);
+        }
     }
 }
