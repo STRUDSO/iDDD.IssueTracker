@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="iDDD.IssueTracker.Web.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SaasOvation.IssueTrack.Domain.Web.MvcApplication" Language="C#" %>

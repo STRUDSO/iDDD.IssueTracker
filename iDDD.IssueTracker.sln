@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDDD.IssueTracker.Web", "iDDD.IssueTracker.Web\iDDD.IssueTracker.Web.csproj", "{E541A4CD-39A7-4F94-BAE3-6A84C3B73036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasOvation.IssueTrack.Domain.Web", "iDDD.IssueTracker.Web\SaasOvation.IssueTrack.Domain.Web.csproj", "{E541A4CD-39A7-4F94-BAE3-6A84C3B73036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDDD.IssueTracker.Domain", "iDDD.IssueTracker.Domain\iDDD.IssueTracker.Domain.csproj", "{615F238B-57C3-486B-B7B7-BD455A7A9EDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasOvation.IssueTrack.Domain.Model", "iDDD.IssueTracker.Domain\SaasOvation.IssueTrack.Domain.Model.csproj", "{615F238B-57C3-486B-B7B7-BD455A7A9EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iDDD.IssueTracker.Test", "iDDD.IssueTracker.Test\iDDD.IssueTracker.Test.csproj", "{DEC9D1EC-CC10-4E61-97BC-A4F90BCF1342}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaasOvation.IssueTrack.Tests", "iDDD.IssueTracker.Test\SaasOvation.IssueTrack.Tests.csproj", "{DEC9D1EC-CC10-4E61-97BC-A4F90BCF1342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
