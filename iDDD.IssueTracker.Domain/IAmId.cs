@@ -1,4 +1,4 @@
-﻿namespace SaasOvation.IssueTrack.Domain.Model.Products
+﻿namespace SaasOvation.IssueTrack.Domain.Model
 {
     public interface IAmId
     {

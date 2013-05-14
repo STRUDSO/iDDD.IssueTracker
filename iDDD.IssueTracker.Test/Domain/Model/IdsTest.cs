@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Ploeh.AutoFixture;
-using SaasOvation.IssueTrack.Domain.Model.Products;
+using SaasOvation.IssueTrack.Domain.Model;
 using Xunit;
 using Xunit.Extensions;
 
