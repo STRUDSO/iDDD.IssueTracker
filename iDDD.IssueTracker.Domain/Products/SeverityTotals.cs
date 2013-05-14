@@ -2,29 +2,39 @@
 {
     public class SeverityTotals
     {
-        public SeverityTotals(int lowCount)
+        public SeverityTotals(int low, int medium, int high)
         {
-            LowCount = lowCount;
+            Low = low;
+            Medium = medium;
+            High = high;
         }
 
-        protected int LowCount { get; private set; }
+        private int Low { get; set; }
+        private int Medium { get; set; }
+        private int High { get; set; }
 
         protected bool Equals(SeverityTotals other)
         {
-            return LowCount == other.LowCount;
+            return Low == other.Low && Medium == other.Medium && High == other.High;
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((SeverityTotals) obj);
         }
 
         public override int GetHashCode()
         {
-            return LowCount;
+            unchecked
+            {
+                int hashCode = Low;
+                hashCode = (hashCode*397) ^ Medium;
+                hashCode = (hashCode*397) ^ High;
+                return hashCode;
+            }
         }
 
         public static bool operator ==(SeverityTotals left, SeverityTotals right)
@@ -39,7 +49,10 @@
 
         public double Weighted(SeverityWeights severityWeights)
         {
-            return LowCount*severityWeights.LowWeight;
+            return 
+                Low*severityWeights.Low + 
+                Medium*severityWeights.Medium + 
+                High*severityWeights.High;
         }
     }
 }
