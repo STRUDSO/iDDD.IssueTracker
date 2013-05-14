@@ -46,7 +46,16 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
 
         public double WeightedTotal(SeverityWeights severityWeights)
         {
-            return new SeverityTotals(_issues.Count(x => x.Type == IssueType.Defect)).Weighted(severityWeights);
+            return SeverityTotals().Weighted(severityWeights);
+        }
+
+        private SeverityTotals SeverityTotals()
+        {
+            var count = _issues.Where(x => x.Type == IssueType.Defect).ToArray();
+            var severityTotals = new SeverityTotals(count.Count(x => x.Priority == IssuePriority.Low),
+                                                    count.Count(x => x.Priority == IssuePriority.Medium),
+                                                    count.Count(x => x.Priority == IssuePriority.High));
+            return severityTotals;
         }
     }
 }

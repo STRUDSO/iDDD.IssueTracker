@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Headspring\Enumeration.cs" />
     <Compile Include="IAmId.cs" />
+    <Compile Include="Products\DefectCreated.cs" />
+    <Compile Include="DomainEventPublisher.cs" />
     <Compile Include="Products\IProductsRepository.cs" />
     <Compile Include="Products\Issue.cs" />
     <Compile Include="Products\IssueAssigner.cs" />

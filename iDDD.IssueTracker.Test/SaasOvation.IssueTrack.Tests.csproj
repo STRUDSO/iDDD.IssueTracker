@@ -71,6 +71,7 @@
     <Compile Include="Domain\Model\Products\ProductManagerTests.cs" />
     <Compile Include="Domain\Model\Products\ProductTest.cs" />
     <Compile Include="Domain\Model\Products\ReleaseTests.cs" />
+    <Compile Include="Domain\Model\Products\SeverityTotalsTests.cs" />
     <Compile Include="Domain\Model\Tenants\TenantIdTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,7 +7,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
     public class ProductDefectRankingService
     {
         private readonly IProductsRepository _productsRepository;
-        public static readonly SeverityWeights SeverityWeights = new SeverityWeights(0.1);
+        public static readonly SeverityWeights SeverityWeights = new SeverityWeights(0.0, 0.25, 1);
 
         public ProductDefectRankingService(IProductsRepository productsRepository)
         {

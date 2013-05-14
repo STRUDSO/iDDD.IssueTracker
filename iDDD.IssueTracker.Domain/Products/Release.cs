@@ -57,11 +57,15 @@
 
     public class SeverityWeights
     {
-        public SeverityWeights(double lowWeight)
+        public SeverityWeights(double lowWeight, double medium, double high)
         {
-            LowWeight = lowWeight;
+            Low = lowWeight;
+            Medium = medium;
+            High = high;
         }
 
-        public double LowWeight { get; set; }
+        public double Low { get; private set; }
+        public double Medium { get; private set; }
+        public double High { get; private set; }
     }
 }
