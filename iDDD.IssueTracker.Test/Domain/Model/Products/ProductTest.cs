@@ -4,7 +4,7 @@ using SaasOvation.IssueTrack.Domain.Model.Tenants;
 using Xunit;
 using Xunit.Extensions;
 
-namespace iDDD.IssueTracker.Test.Domain.Products
+namespace iDDD.IssueTracker.Test.Domain.Model.Products
 {
     public class ProductTest
     {

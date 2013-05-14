@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMoqDataAttribute.cs" />
-    <Compile Include="Domain\Model\Products\IdsTest.cs" />
+    <Compile Include="Domain\Model\IdsTest.cs" />
     <Compile Include="Domain\Model\Products\ProductIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductTest.cs" />
     <Compile Include="Domain\Model\Tenants\TenantIdTests.cs" />
@@ -119,9 +119,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Domain\Model\Tenants\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
