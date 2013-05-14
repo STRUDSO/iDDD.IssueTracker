@@ -2,7 +2,8 @@
 
 namespace iDDD.IssueTracker.Test.Domain.Model.Products
 {
-    public class ProductManagerIdTests : IdsTest<ProductManagerId>
+    public class IssueIdTests: IdsTest<IssueId>
     {
+         
     }
 }

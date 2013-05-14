@@ -64,7 +64,9 @@
   <ItemGroup>
     <Compile Include="AutoMoqDataAttribute.cs" />
     <Compile Include="Domain\Model\IdsTest.cs" />
-    <Compile Include="Domain\Model\Products\ManagerId.cs" />
+    <Compile Include="Domain\Model\Products\IssueIdTests.cs" />
+    <Compile Include="Domain\Model\Products\IssueTests.cs" />
+    <Compile Include="Domain\Model\Products\ProductManagerIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductManagerTests.cs" />
     <Compile Include="Domain\Model\Products\ProductTest.cs" />
