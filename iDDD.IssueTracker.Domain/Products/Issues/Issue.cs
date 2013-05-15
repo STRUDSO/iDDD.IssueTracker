@@ -2,9 +2,9 @@
 
 namespace SaasOvation.IssueTrack.Domain.Model.Products.Issues
 {
-    public class Issue
+    public abstract class Issue
     {
-        public Issue(IssueId id, string summary, string description)
+        protected Issue(IssueId id, string summary, string description)
         {
             if (id == null) throw new ArgumentNullException("id");
             if (summary == null) throw new ArgumentNullException("summary");

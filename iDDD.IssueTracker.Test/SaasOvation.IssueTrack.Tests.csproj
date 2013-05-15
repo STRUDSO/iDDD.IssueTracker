@@ -65,10 +65,10 @@
   <ItemGroup>
     <Compile Include="AutoMoqDataAttribute.cs" />
     <Compile Include="Domain\Model\IdsTest.cs" />
-    <Compile Include="Domain\Model\Products\FeatureTests.cs" />
-    <Compile Include="Domain\Model\Products\IdiomsTests.cs" />
-    <Compile Include="Domain\Model\Products\IssueIdTests.cs" />
-    <Compile Include="Domain\Model\Products\IssueTests.cs" />
+    <Compile Include="Domain\Model\Products\Issues\FeatureTests.cs" />
+    <Compile Include="IdiomsTests.cs" />
+    <Compile Include="Domain\Model\Products\Issues\IssueIdTests.cs" />
+    <Compile Include="Domain\Model\Products\Issues\IssueTests.cs" />
     <Compile Include="Domain\Model\Products\ProductDefectRankingServiceTests.cs" />
     <Compile Include="Domain\Model\Products\ProductManagerIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductIdTests.cs" />
