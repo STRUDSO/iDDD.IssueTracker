@@ -43,15 +43,16 @@
   <ItemGroup>
     <Compile Include="Headspring\Enumeration.cs" />
     <Compile Include="IAmId.cs" />
-    <Compile Include="Products\DefectCreated.cs" />
+    <Compile Include="Products\Issues\Defect.cs" />
+    <Compile Include="Products\Issues\DefectCreated.cs" />
     <Compile Include="DomainEventPublisher.cs" />
-    <Compile Include="Products\DefectSeverityChanged.cs" />
+    <Compile Include="Products\Issues\DefectSeverityChanged.cs" />
     <Compile Include="Products\IProductsRepository.cs" />
-    <Compile Include="Products\Issue.cs" />
-    <Compile Include="Products\IssueAssigner.cs" />
-    <Compile Include="Products\IssueId.cs" />
-    <Compile Include="Products\IssueStatus.cs" />
-    <Compile Include="Products\IssueType.cs" />
+    <Compile Include="Products\Issues\Issue.cs" />
+    <Compile Include="Products\Issues\IssueAssigner.cs" />
+    <Compile Include="Products\Issues\IssueId.cs" />
+    <Compile Include="Products\Issues\IssueStatus.cs" />
+    <Compile Include="Products\Issues\IssueType.cs" />
     <Compile Include="Products\ProductDefectRankingService.cs" />
     <Compile Include="Products\ProductManagerId.cs" />
     <Compile Include="Products\Product.cs" />

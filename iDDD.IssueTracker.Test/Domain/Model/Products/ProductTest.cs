@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Ploeh.AutoFixture.Xunit;
 using SaasOvation.IssueTrack.Domain.Model.Products;
+using SaasOvation.IssueTrack.Domain.Model.Products.Issues;
 using SaasOvation.IssueTrack.Domain.Model.Tenants;
 using Xunit;
 using Xunit.Extensions;
@@ -57,7 +58,7 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
             product.ReportDefect(summary, description);
 
             Issue single = Assert.Single(product.Issues.Where(x => x.Summary == summary && x.Description == description));
-            Assert.Equal(IssueType.Defect, single.Type);
+            Assert.IsAssignableFrom<Defect>(single);
         }
 
         [Theory, AutoMoqData]
@@ -72,7 +73,7 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
             product.ReportFeature(summary, description);
 
             Issue single = Assert.Single(product.Issues.Where(x => x.Summary == summary && x.Description == description));
-            Assert.Equal(IssueType.Feature, single.Type);
+            Assert.IsAssignableFrom<Feature>(single);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SaasOvation.IssueTrack.Domain.Model.Products.Issues;
 using SaasOvation.IssueTrack.Domain.Model.Tenants;
 using System.Linq;
 
@@ -25,7 +26,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
             Description = description;
             ProductManager = productManager;
             IssueAssigner = assigner;
-            _issues = (issues ?? Enumerable.Empty<Issue>()).ToList();
+            _issues = issues.ToList();
         }
 
         public ProductId Id { get; private set; }
@@ -44,12 +45,12 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
 
         public void ReportDefect(string summary, string description)
         {
-            _issues.Add(new Issue(new IssueId(), summary, description, IssueType.Defect));
+            _issues.Add(new Defect(new IssueId(), summary, description));
         }
 
         public void ReportFeature(string summary, string description)
         {
-            _issues.Add(new Issue(new IssueId(), summary, description, IssueType.Feature));
+            _issues.Add(new Feature(new IssueId(), summary, description));
         }
 
         public double WeightedTotal(SeverityWeights severityWeights)

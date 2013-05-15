@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Idioms;
 using Ploeh.AutoFixture.Xunit;
 using SaasOvation.IssueTrack.Domain.Model;
 using SaasOvation.IssueTrack.Domain.Model.Products;
+using SaasOvation.IssueTrack.Domain.Model.Products.Issues;
 using SubSpec;
 using Xunit;
 using Xunit.Extensions;
@@ -76,29 +76,6 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
             "Id set".Assert(() => Assert.Equal(sut.Id, Assert.Single(defectSeverityChangeds).IssueId));
             "Status set".Assert(() => Assert.Equal(sut.Status, Assert.Single(defectSeverityChangeds).Status));
             "NewStatus set".Assert(() => Assert.Equal(newStatus, Assert.Single(defectSeverityChangeds).Status));
-        }
-    }
-
-    public class MyAssert : IdiomaticAssertion
-    {
-        private readonly IFixture _fixture;
-
-        public MyAssert(IFixture fixture)
-        {
-            _fixture = fixture;
-        }
-
-        public override void Verify(System.Reflection.ConstructorInfo constructorInfo)
-        {
-            base.Verify(constructorInfo);
-        }
-        public override void Verify(System.Reflection.MethodInfo methodInfo)
-        {
-            base.Verify(methodInfo);
-        }
-        public override void Verify(System.Reflection.PropertyInfo propertyInfo)
-        {
-            base.Verify(propertyInfo);
         }
     }
 }
