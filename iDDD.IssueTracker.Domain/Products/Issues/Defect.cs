@@ -4,6 +4,7 @@
     {
         public Defect(IssueId id, string summary, string description) : base(id, summary, description)
         {
+            DomainEventPublisher.Publish(new DefectCreated(Id));
         }
     }
 }

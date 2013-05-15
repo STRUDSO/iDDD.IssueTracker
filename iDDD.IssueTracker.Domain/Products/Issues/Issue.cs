@@ -18,7 +18,6 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products.Issues
         public IssueId Id { get; private set; }
         public string Summary { get; private set; }
         public string Description { get; private set; }
-        public IssueType Type { get; private set; }
         public IssueStatus Status { get; private set; }
         public IssuePriority Priority { get; private set; }
 

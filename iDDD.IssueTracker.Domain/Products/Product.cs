@@ -61,7 +61,7 @@ namespace SaasOvation.IssueTrack.Domain.Model.Products
 
         private SeverityTotals SeverityTotals()
         {
-            var count = _issues.Where(x => x.Type == IssueType.Defect).ToArray();
+            var count = _issues.OfType<Defect>().ToArray();
             var severityTotals = new SeverityTotals(count.Count(x => x.Priority == IssuePriority.Low),
                                                     count.Count(x => x.Priority == IssuePriority.Medium),
                                                     count.Count(x => x.Priority == IssuePriority.High));

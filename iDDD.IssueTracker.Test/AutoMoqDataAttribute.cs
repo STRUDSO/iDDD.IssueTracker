@@ -26,9 +26,39 @@ namespace iDDD.IssueTracker.Test
             {
                 return new Fixture()
                     .Customize(new AutoMoqCustomization())
-                    .Customize(new Bla());
+                    .Customize(new Bla())
+                    .Customize(new LazyCustomization());
             }
         }
+    }
+
+    public class LazyCustomization : ICustomization
+    {
+        public void Customize(IFixture fixture)
+        {
+            fixture.Customizations.Add(new LazyGenerator());
+        }
+    }
+
+    public class LazyGenerator : ISpecimenBuilder
+    {
+        public object Create(object request, ISpecimenContext context)
+        {
+            var type = request as Type;
+            if (type != null && type.IsGenericType && typeof (Lazy<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+            {
+                return GetType()
+                    .GetMethod("LazyCreator", BindingFlags.NonPublic | BindingFlags.Instance)
+                    .MakeGenericMethod(type.GetGenericArguments())
+                    .Invoke(this, new[]{context});
+            }
+            return new NoSpecimen(request);
+        }
+
+        private Lazy<T> LazyCreator<T>(ISpecimenContext context)
+        {
+            return new Lazy<T>(context.Create<T>);
+        } 
     }
 
     public class Bla : ICustomization

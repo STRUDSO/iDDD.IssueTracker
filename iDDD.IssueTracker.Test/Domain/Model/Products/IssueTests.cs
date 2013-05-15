@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
 using SaasOvation.IssueTrack.Domain.Model;
@@ -32,41 +33,32 @@ namespace iDDD.IssueTracker.Test.Domain.Model.Products
         }
 
         [Theory, AutoMoqData]
-        public void Ctor_IssueType_IsSet([Frozen] IssueType type, Issue issue)
-        {
-            Assert.Equal(type, issue.Type);
-        }
-
-        [Theory, AutoMoqData]
         public void Ctor_InitialStatus_Open(Issue issue)
         {
             Assert.Equal(IssueStatus.Open, issue.Status);
         }
 
         [Theory, AutoMoqData]
-        public void Ctor_IsDefect_PublishesDefectCreatedEvent(Generator<Issue> issues)
+        public void Ctor_IsDefect_PublishesDefectCreatedEvent(Lazy<Defect> sutLazy)
         {
             var events = new List<object>();
             DomainEventPublisher.Thunk = events.Add;
-            Issue sut = issues.First(x => x.Type == IssueType.Defect);
 
+            var sut = sutLazy.Value;
             DefectCreated defectCreated = Assert.Single(events.OfType<DefectCreated>());
 
             Assert.Equal(sut.Id, defectCreated.IssueId);
         }
 
         [Thesis, AutoMoqData]
-        public void ChangeSeverity_IsDefect_PublishesDefectCreatedEvent(IssueStatus newStatus, Generator<Issue> issues)
+        public void ChangeSeverity_IsDefect_PublishesDefectCreatedEvent(IssueStatus newStatus, Defect sut)
         {
-            Issue sut = null;
             var events = new List<object>();
             "Given Issue".Context(
                 () =>
                     {
                         events.Clear();
                         DomainEventPublisher.Thunk = events.Add;
-
-                        sut = issues.First(x => x.Type == IssueType.Defect);
                     });
 
             "ChangeSeverity".Do(() => sut.ChangeSeverity(newStatus));
