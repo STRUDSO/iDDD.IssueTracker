@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SaasOvation.IssueTrack.Domain.Model.Products
 {
-    public class Product
+    public class Product : IHaveId<ProductId>
     {
         private readonly IList<Issue> _issues;
 

@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="AutoMoqDataAttribute.cs" />
     <Compile Include="Domain\Model\IdsTest.cs" />
+    <Compile Include="Domain\Model\Products\InMemProductRepositoryTests.cs" />
+    <Compile Include="InMemRepository.cs" />
     <Compile Include="Domain\Model\Products\Issues\FeatureTests.cs" />
     <Compile Include="IdiomsTests.cs" />
     <Compile Include="Domain\Model\Products\Issues\IssueIdTests.cs" />
