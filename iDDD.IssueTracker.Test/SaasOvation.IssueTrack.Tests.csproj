@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DEC9D1EC-CC10-4E61-97BC-A4F90BCF1342}</ProjectGuid>
+    <ProjectGuid>{CD03D275-DC5B-41D2-AF11-4CC9C75F0ACF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SaasOvation.IssueTrack.Tests</RootNamespace>
     <AssemblyName>SaasOvation.IssueTrack.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -48,17 +48,19 @@
       <HintPath>..\packages\AutoFixture.Xunit.3.0.8\lib\net40\Ploeh.AutoFixture.Xunit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.SelfHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="xunit, Version=1.8.0.1549, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.8.0.1549\lib\xunit.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.extensions, Version=1.8.0.1549, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="xunit.extensions">
       <HintPath>..\packages\xunit.extensions.1.8.0.1549\lib\xunit.extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -66,23 +68,27 @@
     <Compile Include="AutoMoqDataAttribute.cs" />
     <Compile Include="Domain\Model\IdsTest.cs" />
     <Compile Include="Domain\Model\Products\InMemProductRepositoryTests.cs" />
-    <Compile Include="InMemRepository.cs" />
     <Compile Include="Domain\Model\Products\Issues\FeatureTests.cs" />
-    <Compile Include="IdiomsTests.cs" />
     <Compile Include="Domain\Model\Products\Issues\IssueIdTests.cs" />
     <Compile Include="Domain\Model\Products\Issues\IssueTests.cs" />
     <Compile Include="Domain\Model\Products\ProductDefectRankingServiceTests.cs" />
-    <Compile Include="Domain\Model\Products\ProductManagerIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductIdTests.cs" />
+    <Compile Include="Domain\Model\Products\ProductManagerIdTests.cs" />
     <Compile Include="Domain\Model\Products\ProductManagerTests.cs" />
     <Compile Include="Domain\Model\Products\ProductTest.cs" />
     <Compile Include="Domain\Model\Products\ReleaseTests.cs" />
     <Compile Include="Domain\Model\Products\SeverityTotalsTests.cs" />
     <Compile Include="Domain\Model\Tenants\TenantIdTests.cs" />
+    <Compile Include="IdentityAccess\RestBlah.cs" />
+    <Compile Include="IdiomsTests.cs" />
+    <Compile Include="InMemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubSpec\SubSpec.cs" />
     <Compile Include="SubSpec\SubSpec.Thesis.cs" />
     <Compile Include="SubSpec\SubSpecUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SubSpec\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -93,51 +99,13 @@
       <Project>{615F238B-57C3-486B-B7B7-BD455A7A9EDB}</Project>
       <Name>SaasOvation.IssueTrack.Domain.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iDDD.IssueTracker.Web\SaasOvation.IssueTrack.Domain.Web.csproj">
+      <Project>{E541A4CD-39A7-4F94-BAE3-6A84C3B73036}</Project>
+      <Name>SaasOvation.IssueTrack.Domain.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DEC9D1EC-CC10-4E61-97BC-A4F90BCF1342}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iDDD.IssueTracker.Test</RootNamespace>
-    <AssemblyName>iDDD.IssueTracker.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SubSpec\LICENSE.txt" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

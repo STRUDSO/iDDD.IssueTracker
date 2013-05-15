@@ -10,6 +10,10 @@ namespace iDDD.IssueTracker.Web
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Routes.MapHttpRoute(name: "Tenants",
+                                       routeTemplate: "api/tenants/{tenantId}/user/{userId}/inrole/{roleName}",
+                                       defaults:new {controller="Role"}
+                                       );
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
